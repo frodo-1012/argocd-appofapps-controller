@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: b2b-front
+spec:
+  destinations:
+  - name: 11st-dev-v1
+    namespace: b2b
+    server: https://2138FCE88645A3C6860B3B35D7BDFD62.sk1.ap-northeast-2.eks.amazonaws.com
+  - name: 11st-alpha-blue-v1
+    namespace: b2b
+    server: https://84F83641F11C9952858F76835A6D9610.gr7.ap-northeast-2.eks.amazonaws.com
+  - name: 11st-prod-blue-v1
+    namespace: b2b
+    server: https://31CFEAF3F7E9F57A0658FCE09BA41DAF.gr7.ap-northeast-2.eks.amazonaws.com
+  - name: 11st-dev-green-v1
+    namespace: b2b
+    server: https://F34063D0A380BAB9500B7433F4E10E9A.gr7.ap-northeast-2.eks.amazonaws.com
+  - name: 11st-alpha-green-v1
+    namespace: b2b
+    server: https://D5E80E24F471569D91E6EE9C261D076E.gr7.ap-northeast-2.eks.amazonaws.com
+  - name: 11st-prod-green-v1
+    namespace: b2b
+    server: https://B34BC3671D9AFC91E5DDED7FAF74BBF0.yl4.ap-northeast-2.eks.amazonaws.com
+  sourceRepos:
+  - http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-b2b-front.git
+status: {}

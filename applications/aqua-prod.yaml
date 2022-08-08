@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aqua-prod
+spec:
+  destination:
+    namespace: aqua
+    name: 11st-prod-green-v1
+  project: security
+  source:
+    path: aqua/kustomization/overlays/prod
+    repoURL: http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-security.git
+    targetRevision: HEAD

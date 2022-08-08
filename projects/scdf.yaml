@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: scdf
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+  - name: 11st-dev-green-v1
+    namespace: scdf
+    server: https://F34063D0A380BAB9500B7433F4E10E9A.gr7.ap-northeast-2.eks.amazonaws.com
+  - name: 11st-prod-green-v1
+    namespace: scdf
+    server: https://B34BC3671D9AFC91E5DDED7FAF74BBF0.yl4.ap-northeast-2.eks.amazonaws.com
+  sourceRepos:
+  - http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-scdf.git
+status: {}

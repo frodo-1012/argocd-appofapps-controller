@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: private-jenkins-test
+  namespace: jenkins
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: private-jenkins-test
+  source:
+    repoURL: http://bitbucket.11stcorp.com/scm/eks/deleteme-jenkins-chart-fork.git
+    path: charts/jenkins
+    targetRevision: master
+    helm:
+      version: v3
+      valueFiles:
+        - dev-jenkins-values.yaml
+  destination:
+    namespace: jenkins
+    name: 11st-tool-v1
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app-cx-mon
+spec:
+  description: app-cx-mon
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+  - namespace: cx-mon
+    server: '*'
+  sourceRepos:
+  - http://bitbucket.11stcorp.com/scm/cloud/argocd-env-service.git
+  - http://bitbucket.11stcorp.com/scm/cloud/app-cx-mon-deploy.git
+  - http://bitbucket.11stcorp.com/scm/stprd/app-cx-mon.git
+status: {}

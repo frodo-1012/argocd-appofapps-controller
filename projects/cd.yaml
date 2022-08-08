@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cd
+spec:
+  description: cd
+  destinations:
+  - namespace: cd
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://kubernetes-charts.storage.googleapis.com
+  - https://charts.helm.sh/stable
+status: {}

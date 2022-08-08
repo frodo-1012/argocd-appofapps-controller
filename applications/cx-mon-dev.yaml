@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cx-mon-dev
+spec:
+  destination:
+    namespace: cx-mon
+    name: 11st-dev-green-v1
+  project: app-cx-mon
+  source:
+    path: kustomization/overlays/dev
+    repoURL: http://bitbucket.11stcorp.com/scm/stprd/app-cx-mon.git
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+

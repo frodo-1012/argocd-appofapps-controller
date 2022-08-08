@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: plan-eda-consumer-dev
+spec:
+  destination:
+    namespace: plan
+    name: 11st-dev-green-v1
+  project: plan-eda-consumer
+  source:
+    path: kustomization/overlays/dev
+    repoURL: http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-plan-eda-consumer.git
+    targetRevision: HEAD
+  syncPolicy:
+    #automated: {}
+    syncOptions:
+      - CreateNamespace=true

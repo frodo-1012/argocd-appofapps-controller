@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: b2b-front-dev
+spec:
+  destination:
+    namespace: b2b
+    name: 11st-dev-green-v1
+  project: b2b-front
+  source:
+    path: kustomization/overlays/dev
+    repoURL: http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-b2b-front.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}

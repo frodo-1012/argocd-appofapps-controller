@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: splunk-dev-set
+spec:
+  generators:
+  - list:
+      elements:
+        - cluster: 11st-security-team-dev
+          url: https://C0FFB75240611CC43C376E4E36028B9E.gr7.ap-northeast-2.eks.amazonaws.com
+        - cluster: 11st-dev-green-v1
+          url: https://F34063D0A380BAB9500B7433F4E10E9A.gr7.ap-northeast-2.eks.amazonaws.com
+        - cluster: 11st-tool-v1
+          url: https://335192B9F0865BF93CDE769F66D98C0F.yl4.ap-northeast-2.eks.amazonaws.com
+        - cluster: 11st-vine-dev
+          url: https://866F6B74B3D1D38BCDF68E05B65EC273.gr7.ap-northeast-2.eks.amazonaws.com
+        - cluster: 11st-vine-tool
+          url: https://6472A5FD8F92CB774B5823D07333D402.yl4.ap-northeast-2.eks.amazonaws.com
+  template:
+    metadata:
+      name: 'splunk-{{cluster}}'
+    spec:
+      project: security
+      source:
+        targetRevision: HEAD
+        repoURL: http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-helm-splunk.git
+        path: .
+        helm:
+          parameters:
+            - name: splunk-connect-for-kubernetes.global.kubernetes.clusterName
+              value: '{{cluster}}'
+          version: v3
+          valueFiles:
+            - dev-values.yaml
+      destination:
+        server: '{{url}}'
+        namespace: splunk
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true
+ 

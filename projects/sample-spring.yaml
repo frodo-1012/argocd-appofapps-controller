@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: sample-spring
+spec:
+  description: sample-spring
+  destinations:
+  - namespace: sample-spring
+    server: '*'
+  roles:
+  - groups:
+    - test
+    name: test
+    policies:
+    - p, proj:sample-spring:test, applications, get, sample-spring/sample-spring,
+      allow
+    - p, proj:sample-spring:test, applications, sync, sample-spring/sample-spring,
+      allow
+  sourceRepos:
+  - http://bitbucket.11stcorp.com/scm/cloud/sample-spring.git
+status:
+  jwtTokensByRole:
+    test: {}

@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: apptour
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: apptour project
+  destinations:
+  - namespace: '*'
+    server: '*'
+  namespaceResourceBlacklist:
+  - group: ""
+    kind: ""
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  orphanedResources:
+    warn: false
+  sourceRepos:
+  - http://bitbucket.11stcorp.com/scm/cloud/argocd-env-service.git
+  - https://kubernetes.github.io/ingress-nginx
+  - http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-tour-internal-access.git
+status: {}

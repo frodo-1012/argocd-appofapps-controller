@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tour-hpa-prod
+spec:
+  destination:
+    namespace: tour
+    name: 11st-prod-green-v1
+  project: apptour
+  source:
+    path: app/apptour/kustomization/overlays/prod
+    repoURL: http://bitbucket.11stcorp.com/scm/cloud/argocd-env-service.git
+    targetRevision: HEAD

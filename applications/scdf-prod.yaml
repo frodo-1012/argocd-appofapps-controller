@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: scdf-prod
+spec:
+  destination:
+    namespace: scdf
+    name: 11st-prod-green-v1
+  project: scdf
+  source:
+    path: scdf/kustomization/overlays/prod
+    repoURL: http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-scdf.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}

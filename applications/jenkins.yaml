@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jenkins
+  namespace: ci
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: ci
+  source:
+    repoURL: http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-ci-jenkins.git
+    path: helm_chart
+    targetRevision: master
+    helm:
+      version: v3
+      valueFiles:
+        - tool-jenkins-values.yaml
+  destination:
+    namespace: ci
+    server: https://kubernetes.default.svc
+  # syncPolicy:
+  #   syncOptions:
+  #     - CreateNamespace=true
