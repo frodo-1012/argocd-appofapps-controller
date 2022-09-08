@@ -8,7 +8,7 @@ metadata:
 spec:
   project: ci
   source:
-    repoURL: http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-ci-jenkins.git
+    repoURL: 
     path: helm_chart
     targetRevision: master
     helm:

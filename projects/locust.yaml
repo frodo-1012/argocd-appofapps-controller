@@ -9,7 +9,7 @@ spec:
   destinations:
   - name: 11st-dev-green-v1
     namespace: locust
-    server: https://F34063D0A380BAB9500B7433F4E10E9A.gr7.ap-northeast-2.eks.amazonaws.com
+    server:
   sourceRepos:
-  - http://bitbucket.11stcorp.com/scm/eks/argocd-deploy-helm-locust.git
+  -
 status: {}

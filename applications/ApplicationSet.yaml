@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: splunk-dev-set
+spec:
+  generators:
+  - list:
+      elements:
+        - cluster: ## Cluster Name
+          url: ## Cluster url  template:
+    metadata:
+      name: 'splunk-{{cluster}}'
+    spec:
+      project: security
+      source:
+        targetRevision: HEAD
+        repoURL: ## http repo url
+        path: .
+        helm:
+          parameters:
+            - name: splunk-connect-for-kubernetes.global.kubernetes.clusterName
+              value: '{{cluster}}'
+          version: v3
+          valueFiles:
+            - dev-values.yaml
+      destination:
+        server: '{{url}}'
+        namespace: splunk
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true
+ 

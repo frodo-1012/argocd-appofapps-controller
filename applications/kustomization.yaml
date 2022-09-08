@@ -3,37 +3,7 @@ kind: Kustomization
 namespace: devops
 
 resources:
-  - b2b-auth-dev.yaml
-  - b2b-auth-alpha.yaml
-  - b2b-auth-prod.yaml
   - b2b-front-dev.yaml
-  - b2b-front-alpha.yaml
-  - b2b-front-prod.yaml
-  - cx-mon-dev.yaml
-  - cx-mon-prod.yaml
   - jenkins.yaml
-  - spinnaker.yaml
-  - chatbot-dev.yaml
-  - chatbot-alp.yaml
-  - chatbot-prod.yaml
-  - tour-hpa-dev.yaml
-  - tour-hpa-alp.yaml
-  - tour-hpa-prod.yaml
-  - plan-eda-producer-dev.yaml
-  - plan-eda-consumer-dev.yaml
-  - scdf-dev.yaml
-  - scdf-dev-jenkins.yaml
-  - scdf-prod.yaml
-  - scdf-prod-jenkins.yaml
-  # - aqua-prod.yaml
-  - locust-dev.yaml
-  - private-jenkins-test.yaml
-  - splunk-dev-set.yaml
-  - tour-internal-access-alpha.yaml
-  - tour-internal-access-teampatch1.yaml
-  - tour-internal-access-teampatch2.yaml
-
+  - ApplicationSet.yaml
   - CE-mario-ys.yaml
-  - CE-mario-mj.yaml
-  - CE-mario-psc.yaml
-  - CE-mario-kook.yaml
